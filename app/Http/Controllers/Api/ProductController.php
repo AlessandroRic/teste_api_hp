@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Http\Resources;
 use App\Http\Resources\ProductCollection;
 use App\Http\Resources\ProductResource;
 use App\Product;
@@ -37,7 +36,7 @@ class ProductController extends Controller
         $data = $request->all();
         $product = $this->product->create($data);
 
-        return response()->json($product);
+        return response()->json($product, 200);
     }
 
     public function update(Request $request)
@@ -47,7 +46,7 @@ class ProductController extends Controller
         $product = $this->product->find($data['id']);
         $product->update($data);
 
-        return response()->json($product);
+        return response()->json($product, 200);
     }
 
     public function delete($id)
