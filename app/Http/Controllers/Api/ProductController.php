@@ -20,7 +20,7 @@ class ProductController extends Controller
 
     public function index()
     {
-        $products = $this->product->paginate(10);
+        $products = $this->product->all();
 
         return new ProductCollection($products);
     }
