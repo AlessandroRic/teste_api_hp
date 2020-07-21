@@ -7,7 +7,6 @@ use App\Http\Resources\PurchaseResource;
 use App\Product;
 use Illuminate\Http\Request;
 use App\Purchase;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Validator;
 
 class PurchaseController extends Controller
