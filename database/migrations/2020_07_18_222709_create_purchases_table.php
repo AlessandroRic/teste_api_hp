@@ -15,9 +15,13 @@ class CreatePurchasesTable extends Migration
     {
         Schema::create('purchases', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('products_id');
+
             $table->integer('quantity');
             $table->decimal('total_price', 14, 2);
             $table->timestamps();
+
+            $table->foreign('products_id')->references('id')->on('products');
         });
     }
 

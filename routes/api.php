@@ -17,10 +17,17 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
-Route::namespace('Api')->prefix('products')->group(function(){
-    Route::get('/', 'ProductController@index');
-    Route::get('/{id}', 'ProductController@show');
-    Route::post('/', 'ProductController@save');
-    Route::put('/', 'ProductController@update');
-    Route::delete('/{id}', 'ProductController@delete');
+Route::namespace('Api')->group(function(){
+
+    Route::prefix('products')->group(function(){
+        Route::get('/', 'ProductController@index');
+        Route::get('/{id}', 'ProductController@show');
+        Route::post('/', 'ProductController@save');
+        Route::put('/', 'ProductController@update');
+        Route::delete('/{id}', 'ProductController@delete');
+    });
+
+    Route::prefix('purchase')->group(function(){
+        Route::post('/', 'PurchaseController@sale');
+    });
 });
